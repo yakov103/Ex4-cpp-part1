@@ -1,9 +1,14 @@
-#include <iostream>
-#include <vector>
-#include <stdexcept>
-#include <string>
-using namespace std;
+#include "Player.hpp"
+
 namespace coup{
-
-
+    class Duke : public Player
+    {
+    private:
+        /* data */
+    public:
+        Duke(Game &game, string name);
+        void block(Player &p);
+        void tax();
+        ~Duke();
+    };
 }
