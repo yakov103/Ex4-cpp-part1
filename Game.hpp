@@ -2,20 +2,24 @@
 #include <vector>
 #include <stdexcept>
 #include <string>
+// #include "Player.hpp"
+#pragma once
 using namespace std;
 
-
-namespace coup{
-    class Game {
-    private: 
-        vector<string> playerList; 
-        unsigned int i ; 
-    public:
-        Game(); 
+namespace coup
+{
+    class Game
+    {
+    private:
+        vector<string> playerList;
+        unsigned int i;
+    public: 
+        Game(/* args */);
         vector<string> players();
-        string turn(); 
-        string winner(); 
-        void addPlayer(string &p);
+        string turn();
+        string winner();
+        //void addPlayer(string name);
         ~Game();
     };
+    
 }

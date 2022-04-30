@@ -6,7 +6,7 @@ namespace coup {
         this->game = &game; 
         this->amountCoins = 0 ; 
 
-        game.addPlayer(name_init); 
+        //game.addPlayer(name_init); 
 
         }
         void Player::income(){
@@ -25,7 +25,7 @@ namespace coup {
             cout << "roles" << endl ; 
         }
         int Player::coins(){
-            this->amountCoins; 
+            return (int)this->amountCoins; 
         }
         Player::~Player(){
 

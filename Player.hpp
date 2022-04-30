@@ -8,10 +8,11 @@ using namespace std;
 namespace coup{
     class Player { 
         private : 
+ 
+        public : 
         string name;
         unsigned int amountCoins; 
         Game *game; 
-        public : 
         Player(Game & game, string name_init); 
         void income();
         void foreign_aid();
