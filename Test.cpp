@@ -14,16 +14,15 @@ using namespace coup;
 
 TEST_CASE("RUN GAME")
 {
-	vector<string> playersNames = {"Moshe", "Yossi", "Meirav", "Reut", "Gilad"};
+	
 	Game game_1{};
-	Duke duke{game_1, "Moshe"};
 	Assassin assassin{game_1, "Yossi"};
+	Duke duke{game_1, "Moshe"};
 	Ambassador ambassador{game_1, "Meirav"};
 	Captain captain{game_1, "Reut"};
 	Contessa contessa{game_1, "Gilad"};
+	vector<string> listOfPlayers = {"Moshe", "Yossi", "Meirav", "Reut", "Gilad"};
 
-	//check all names in game is correct
-	CHECK_EQ(game_1.players(), playersNames);
 
 	// check if each players start with 0 coins;
 	CHECK_EQ(duke.coins(), 0);
@@ -31,9 +30,10 @@ TEST_CASE("RUN GAME")
 	CHECK_EQ(ambassador.coins(), 0);
 	CHECK_EQ(captain.coins(), 0);
 	CHECK_EQ(contessa.coins(), 0);
+	CHECK_EQ(game_1.players(), listOfPlayers);
 
-	//check if it onley the duke trun
-	CHECK_EQ(game_1.turn(), "Moshe");
+	//check if it onley the Asssingn  trun
+	CHECK_EQ(game_1.turn(), "Yossi");
 	
 	CHECK_THROWS(assassin.income());
 	CHECK_THROWS(ambassador.income());
@@ -41,18 +41,18 @@ TEST_CASE("RUN GAME")
 	CHECK_THROWS(contessa.income());
 
 	// throws no exceptions all players play
-	CHECK_NOTHROW(duke.income());
 	CHECK_NOTHROW(assassin.income());
+	CHECK_NOTHROW(duke.income());
 	CHECK_NOTHROW(ambassador.income());
 	CHECK_NOTHROW(captain.income());
 	CHECK_NOTHROW(contessa.income());
 	
 	// throws exception, it is player's turn now
-	CHECK_THROWS(assassin.income());
+	CHECK_THROWS(ambassador.income());
 
-	//now is good
-	CHECK_NOTHROW(duke.income());
-	CHECK_NOTHROW(assassin.foreign_aid());
+	//continue
+	CHECK_NOTHROW(assassin.income());
+	CHECK_NOTHROW(duke.foreign_aid());
 
 	// throws exception, the last operation duke performed
 	// is income, which cannot be blocked by any role
@@ -81,9 +81,9 @@ TEST_CASE("RUN GAME")
 	CHECK_NOTHROW(duke.tax());
 	// no exception, assassin can coup with only 3 coins
 	CHECK_NOTHROW(assassin.coup(duke));
-	playersNames = {"Yossi", "Meirav", "Reut", "Gilad"};
-	CHECK_EQ(game_1.players(), playersNames);
+	listOfPlayers = {"Yossi", "Meirav", "Reut", "Gilad"};
+	CHECK_EQ(game_1.players(), listOfPlayers);
 	CHECK_NOTHROW(contessa.block(assassin));
-	playersNames = {"Moshe", "Yossi", "Meirav", "Reut", "Gilad"};
-	CHECK_EQ(game_1.players(), playersNames);
+	listOfPlayers = {"Moshe", "Yossi", "Meirav", "Reut", "Gilad"};
+	CHECK_EQ(game_1.players(), listOfPlayers);
 }

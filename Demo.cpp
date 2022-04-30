@@ -51,7 +51,6 @@ int main() {
 	// prints Moshe
 	
 	cout << game_1.turn() << endl;
-	cout << "blalalallaalalalalal" << endl;
 
 	// throws no exceptions
 	duke.income();
